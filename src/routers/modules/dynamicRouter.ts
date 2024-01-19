@@ -1,5 +1,5 @@
 import router from "@/routers/index";
-import { LOGIN_URL } from "@/config";
+import { HOME_URL, LOGIN_URL, MATCH_NAME } from "@/config";
 import { RouteRecordRaw } from "vue-router";
 import { ElNotification } from "element-plus";
 import { useUserStore } from "@/stores/modules/user";
@@ -44,6 +44,12 @@ export const initDynamicRouter = async () => {
       } else {
         router.addRoute("layout", item as unknown as RouteRecordRaw);
       }
+    });
+    router.removeRoute(MATCH_NAME);
+    router.addRoute({
+      path: "/:pathMatch(.*)*",
+      redirect: HOME_URL,
+      name: MATCH_NAME
     });
   } catch (error) {
     // 当按钮 || 菜单请求出错时，重定向到登陆页

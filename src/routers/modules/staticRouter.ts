@@ -1,5 +1,5 @@
 import { RouteRecordRaw } from "vue-router";
-import { HOME_URL, LOGIN_URL } from "@/config";
+import { HOME_URL, LOGIN_URL, MATCH_NAME } from "@/config";
 
 /**
  * staticRouter (静态路由)
@@ -58,6 +58,7 @@ export const errorRouter = [
   // Resolve refresh page, route warnings
   {
     path: "/:pathMatch(.*)*",
+    name: MATCH_NAME,
     component: () => import("@/components/ErrorMessage/404.vue")
   }
 ];

@@ -6,6 +6,9 @@ export const HOME_URL: string = "/home/index";
 // 登录页地址（默认）
 export const LOGIN_URL: string = "/login";
 
+// 全匹配路由名(默认)
+export const MATCH_NAME: string = "matchAll";
+
 // 默认主题颜色
 export const DEFAULT_PRIMARY: string = "#2d8cf0";
 
