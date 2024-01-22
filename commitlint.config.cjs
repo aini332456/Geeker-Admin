@@ -158,6 +158,6 @@ module.exports = {
     emptyScopesAlias: "empty",
     customScopesAlias: "custom",
     allowBreakingChanges: ["feat", "fix"],
-    skipQuestions: ["body", "breaking", "footerPrefixsSelect", "customFooterPrefixs", "footer", "confirmCommit"]
+    skipQuestions: ["body", "breaking", "footerPrefix", "customFooterPrefixs", "footer", "confirmCommit"]
   }
 };
