@@ -11,6 +11,7 @@ const auth: Directive = {
     const authStore = useAuthStore();
     const currentPageRoles = authStore.authButtonListGet[authStore.routeName] ?? [];
     if (value instanceof Array && value.length) {
+      /**此处判断为权限全包含, 根据业务逻辑可以修改为部分包含 */
       const hasPermission = value.every(item => currentPageRoles.includes(item));
       if (!hasPermission) el.remove();
     } else {
