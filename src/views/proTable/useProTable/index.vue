@@ -51,9 +51,9 @@
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { User } from "@/api/interface";
-import { useHandleData } from "@/hooks/useHandleData";
-import { useDownload } from "@/hooks/useDownload";
-import { useAuthButtons } from "@/hooks/useAuthButtons";
+import { useHandleData } from "@/utils/hooks/useHandleData";
+import { useDownload } from "@/utils/hooks/useDownload";
+import { useAuthButtons } from "@/utils/hooks/useAuthButtons";
 import { ElMessage, ElMessageBox } from "element-plus";
 import ProTable from "@/components/ProTable/index.vue";
 import ImportExcel from "@/components/ImportExcel/index.vue";

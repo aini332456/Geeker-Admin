@@ -23,7 +23,7 @@ import ElementPlus from "element-plus";
 // element icons
 import * as Icons from "@element-plus/icons-vue";
 // custom directives
-import directives from "@/directives/index";
+import directives from "@/utils/directives/index";
 // vue Router
 import router from "@/routers";
 // pinia store

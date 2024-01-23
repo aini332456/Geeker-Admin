@@ -104,8 +104,8 @@
 <script setup lang="ts" name="ProTable">
 import { ref, watch, provide, onMounted, unref, computed, reactive } from "vue";
 import { ElTable } from "element-plus";
-import { useTable } from "@/hooks/useTable";
-import { useSelection } from "@/hooks/useSelection";
+import { useTable } from "@/utils/hooks/useTable";
+import { useSelection } from "@/utils/hooks/useSelection";
 import { BreakPoint } from "@/components/Grid/interface";
 import { ColumnProps, TypeProps } from "@/components/ProTable/interface";
 import { Refresh, Operation, Search } from "@element-plus/icons-vue";

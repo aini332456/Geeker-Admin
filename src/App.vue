@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { reactive, computed } from "vue";
 import { getBrowserLang } from "@/utils";
-import { useTheme } from "@/hooks/useTheme";
+import { useTheme } from "@/utils/hooks/useTheme";
 import { ElConfigProvider } from "element-plus";
 import { useGlobalStore } from "@/stores/modules/global";
 import en from "element-plus/es/locale/lang/en";

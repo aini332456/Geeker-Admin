@@ -43,8 +43,8 @@
 import { ref, reactive, onMounted, watch } from "vue";
 import { User } from "@/api/interface";
 import { ElMessage, ElMessageBox } from "element-plus";
-import { useHandleData } from "@/hooks/useHandleData";
-import { useDownload } from "@/hooks/useDownload";
+import { useHandleData } from "@/utils/hooks/useHandleData";
+import { useDownload } from "@/utils/hooks/useDownload";
 import { genderType, userStatus } from "@/utils/dict";
 import ProTable from "@/components/ProTable/index.vue";
 import TreeFilter from "@/components/TreeFilter/index.vue";
