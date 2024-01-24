@@ -9,6 +9,9 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import eslintPlugin from "vite-plugin-eslint";
 import viteCompression from "vite-plugin-compression";
 import vueSetupExtend from "unplugin-vue-setup-extend-plus/vite";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { ElementPlusResolver } from "unplugin-vue-components/resolvers";
 
 /**
  * 创建 vite 插件
@@ -42,7 +45,14 @@ export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOptio
     // vitePWA
     VITE_PWA && createVitePwa(viteEnv),
     // 是否生成包预览，分析依赖包大小做优化处理
-    VITE_REPORT && (visualizer({ filename: "stats.html", gzipSize: true, brotliSize: true }) as PluginOption)
+    VITE_REPORT && (visualizer({ filename: "stats.html", gzipSize: true, brotliSize: true }) as PluginOption),
+    // 按需引入Element-puls
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
+    })
   ];
 };
 
