@@ -176,6 +176,20 @@
           }
         },
         {
+          "path": "/assembly/aMap",
+          "name": "map",
+          "component": "/assembly/aMap/index",
+          "meta": {
+            "icon": "Menu",
+            "title": "AMap",
+            "isLink": "",
+            "isHide": false,
+            "isFull": false,
+            "isAffix": false,
+            "isKeepAlive": true
+          }
+        },
+        {
           "path": "/assembly/tabs",
           "name": "tabs",
           "component": "/assembly/tabs/index",

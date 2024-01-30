@@ -1,0 +1,47 @@
+{
+  "_from": "@amap/amap-jsapi-types",
+  "_id": "@amap/amap-jsapi-types@0.0.4",
+  "_inBundle": false,
+  "_integrity": "sha512-4inBXm+hMPAB9NXu+JsXxhazT6LikGSthXzuVTKe5v/+LeKm9pZ1bpW9TZ9P5oyOc897tCKdA1ImPJU9Lf5Rcw==",
+  "_location": "/@amap/amap-jsapi-types",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@amap/amap-jsapi-types",
+    "name": "@amap/amap-jsapi-types",
+    "escapedName": "@amap%2famap-jsapi-types",
+    "scope": "@amap",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@amap/amap-jsapi-types/-/amap-jsapi-types-0.0.4.tgz",
+  "_shasum": "76a93b6b32235614d690ff321ec002d3e881e589",
+  "_spec": "@amap/amap-jsapi-types",
+  "_where": "/Users/martin/Sites/lx-werm-admin-ui",
+  "author": {
+    "name": "donglai.ydl"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "amap-jsapi-types 是高德开放平台官网提供的地图 JSAPI2.0 的 Typescript 声明文件",
+  "devDependencies": {
+    "typescript": "^3.7.3"
+  },
+  "files": [
+    "index.d.ts"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@amap/amap-jsapi-types",
+  "scripts": {
+    "test": "tsc test.ts --noEmit"
+  },
+  "typings": "index.d.ts",
+  "version": "0.0.4"
+}
