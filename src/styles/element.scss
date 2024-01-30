@@ -134,20 +134,21 @@
   // el-table 表格样式
   .el-table {
     flex: 1;
+    color: #333333;
 
     // 修复 safari 浏览器表格错位 https://github.com/HalseySpicy/Geeker-Admin/issues/83
     table {
       width: 100%;
     }
     .el-table__header th {
-      height: 45px;
-      font-size: 15px;
-      font-weight: bold;
-      color: var(--el-text-color-primary);
-      background: var(--el-fill-color-light);
+      height: 40px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #626d83;
+      background: #eaf1ff;
     }
     .el-table__row {
-      height: 45px;
+      height: 60px;
       font-size: 14px;
       .move {
         cursor: move;

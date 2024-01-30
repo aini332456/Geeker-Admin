@@ -4,7 +4,7 @@
       <Grid ref="gridRef" :collapsed="collapsed" :gap="[20, 0]" :cols="searchCol">
         <GridItem v-for="(item, index) in columns" :key="item.prop" v-bind="getResponsive(item)" :index="index">
           <el-form-item>
-            <template #label>
+            <template #label v-if="item.search?.label !== ''">
               <el-space :size="4">
                 <span>{{ `${item.search?.label ?? item.label}` }}</span>
                 <el-tooltip v-if="item.search?.tooltip" effect="dark" :content="item.search?.tooltip" placement="top">

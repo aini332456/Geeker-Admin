@@ -1,0 +1,6 @@
+.transp-btn {
+  background-color: transparent;
+  &:hover {
+    background-color: var(--el-color-primary);
+  }
+}

@@ -13,7 +13,6 @@ declare module "vue" {
     AMap: (typeof import("./src/components/AMap/index.vue"))["default"];
     ColSetting: (typeof import("./src/components/ProTable/components/ColSetting.vue"))["default"];
     ECharts: (typeof import("./src/components/ECharts/index.vue"))["default"];
-    ElAlert: (typeof import("element-plus/es"))["ElAlert"];
     ElAside: (typeof import("element-plus/es"))["ElAside"];
     ElBadge: (typeof import("element-plus/es"))["ElBadge"];
     ElBreadcrumb: (typeof import("element-plus/es"))["ElBreadcrumb"];

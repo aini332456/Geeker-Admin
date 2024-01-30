@@ -1,3 +1,5 @@
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
+<!-- eslint-disable @typescript-eslint/no-unused-vars -->
 <template>
   <component
     :is="column.search?.render ?? `el-${column.search?.el}`"
