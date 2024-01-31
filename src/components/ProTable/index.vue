@@ -1,34 +1,36 @@
 <!-- 📚📚📚 Pro-Table 文档: https://juejin.cn/post/7166068828202336263 -->
 
 <template>
-  <!-- 查询表单 -->
-  <SearchForm
-    v-show="isShowSearch"
-    :search="_search"
-    :reset="_reset"
-    :columns="searchColumns"
-    :search-param="searchParam"
-    :search-col="searchCol"
-  />
-
   <!-- 表格主体 -->
   <div class="card table-main">
-    <!-- 表格头部 操作按钮 -->
-    <div class="table-header">
-      <div class="header-button-lf">
-        <slot name="tableHeader" :selected-list="selectedList" :selected-list-ids="selectedListIds" :is-selected="isSelected" />
-      </div>
-      <div v-if="toolButton" class="header-button-ri">
-        <slot name="toolButton">
-          <el-button v-if="showToolButton('refresh')" :icon="Refresh" circle @click="getTableList" />
-          <el-button v-if="showToolButton('setting') && columns.length" :icon="Operation" circle @click="openColSetting" />
-          <el-button
-            v-if="showToolButton('search') && searchColumns?.length"
-            :icon="Search"
-            circle
-            @click="isShowSearch = !isShowSearch"
-          />
-        </slot>
+    <!-- 表格头部容器 -->
+    <div class="table-header-container">
+      <!-- 查询表单 -->
+      <SearchForm
+        v-show="isShowSearch"
+        :search="_search"
+        :reset="_reset"
+        :columns="searchColumns"
+        :search-param="searchParam"
+        :search-col="searchCol"
+      />
+      <!-- 表格头部 操作按钮 -->
+      <div class="table-header">
+        <div class="header-button-lf">
+          <slot name="tableHeader" :selected-list="selectedList" :selected-list-ids="selectedListIds" :is-selected="isSelected" />
+        </div>
+        <div v-if="toolButton" class="header-button-ri">
+          <slot name="toolButton">
+            <el-button v-if="showToolButton('refresh')" :icon="Refresh" circle @click="getTableList" />
+            <el-button v-if="showToolButton('setting') && columns.length" :icon="Operation" circle @click="openColSetting" />
+            <el-button
+              v-if="showToolButton('search') && searchColumns?.length"
+              :icon="Search"
+              circle
+              @click="isShowSearch = !isShowSearch"
+            />
+          </slot>
+        </div>
       </div>
     </div>
     <!-- 表格主体 -->
@@ -141,7 +143,7 @@ const props = withDefaults(defineProps<ProTableProps>(), {
   border: true,
   toolButton: true,
   rowKey: "id",
-  searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 3, xl: 4 })
+  searchCol: () => ({ xs: 1, sm: 2, md: 2, lg: 4, xl: 4 })
 });
 
 // table 实例

@@ -47,14 +47,33 @@ const columns = ref<ColumnProps[]>([
     prop: "infoTitle",
     minWidth: 130,
     search: {
-      el: "switch",
-      label: ""
+      el: "input",
+      label: "",
+      props: { placeholder: "请输入标题关键词" }
     }
   },
-  { label: "品类", prop: "prodType", enum: getProdTypeEnum() },
+  {
+    label: "品类",
+    prop: "prodType",
+    enum: getProdTypeEnum(),
+    search: {
+      el: "select",
+      label: "",
+      props: { placeholder: "请选择砂石品类" }
+    }
+  },
   { label: "资讯类型", prop: "infoType", enum: getInfoTypeEnum() },
   { label: "来源", prop: "source" },
-  { label: "资讯日期", prop: "infoDate", sortable: true },
+  {
+    label: "资讯日期",
+    prop: "infoDate",
+    sortable: true,
+    search: {
+      el: "date-picker",
+      label: "",
+      props: { type: "daterange", startPlaceholder: "起始时间", endPlaceholder: "结束时间" }
+    }
+  },
   { label: "状态", prop: "status", enum: getInfoStateEnum() },
   { label: "更新日期", prop: "updateDate", sortable: true },
   { label: "操作", prop: "operation", width: 300 }

@@ -1,0 +1,49 @@
+.edit-dialog {
+  --el-text-color-regular: #333333;
+  :deep {
+    .el-dialog__header {
+      background-color: var(--el-color-primary);
+      .el-dialog__title {
+        font-size: 20px;
+        font-weight: 500;
+        color: #ffffff;
+      }
+      .el-dialog__headerbtn {
+        margin-top: -4px;
+        .el-dialog__close {
+          font-size: 24px;
+          color: rgb(139 187 255);
+        }
+      }
+    }
+    .el-dialog__body {
+      padding: 20px;
+      .el-select__wrapper {
+        height: 42px;
+      }
+      .el-input__inner {
+        --el-input-inner-height: 40px;
+      }
+    }
+    .dialog-footer {
+      .el-button {
+        width: 108px;
+      }
+    }
+  }
+  .form-container {
+    position: relative;
+    &--sep {
+      margin-bottom: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #000000;
+    }
+    &--tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 12px;
+    }
+  }
+}
