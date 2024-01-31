@@ -28,10 +28,15 @@ import router from "@/routers";
 import pinia from "@/stores";
 // errorHandler
 import errorHandler from "@/utils/errorHandler";
+// 预加载全局组件
+import * as preComp from "@/utils/preComp";
 
 const app = createApp(App);
 
 app.config.errorHandler = errorHandler;
+Object.keys(preComp).forEach(key => {
+  app.component(key, preComp[key as keyof typeof preComp]);
+});
 
 // register the element Icons component
 Object.keys(Icons).forEach(key => {
