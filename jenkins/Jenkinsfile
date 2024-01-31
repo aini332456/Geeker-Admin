@@ -1,0 +1,112 @@
+
+def getRemoteHost(ip,user){
+    def remote = [:]
+    remote.name = ip
+    remote.host = ip
+    remote.user = user
+    remote.identityFile = identity
+    remote.port = 22
+    remote.allowAnyHosts = true
+    return remote
+}
+
+pipeline {
+    agent any
+    options {
+      disableConcurrentBuilds()
+    }
+
+    environment {
+        project_end_path = "zhihaoscm-admin"
+    }
+
+    stages {
+
+        stage('deploy to dev') {
+            when {
+                branch 'dev*'
+            }
+
+            environment {
+                // 目标服务器 nginx html目录
+                ssh_nginx_dir = '/home/nginx/html/dev'
+                // 目标服务器信息
+                ssh_ip = '192.168.110.230'
+                ssh_user= "root"
+                ssh_key_uid = "server_privatekey"
+                // 环境
+                profile = "dev"
+                // 项目访问路径
+                project_public_path = "zhihaoscm-admin"
+            }
+
+            steps {
+                //打包
+                sh '''
+                if test `jq '.dependencies, .devDependencies' package.json |md5sum |awk '{print \$1}'` = `cat md5.txt` ;then
+                    pnpm run build:${profile} && rm -rf ${project_end_path} && mv dist ${project_end_path}
+                else
+                    pnpm install && jq '.dependencies, .devDependencies' package.json |md5sum |awk '{print \$1}' > md5.txt && \
+                    pnpm run build:${profile} && rm -rf ${project_end_path} && mv dist ${project_end_path}
+                fi
+                '''
+                withCredentials([sshUserPrivateKey(credentialsId: "${ssh_key_uid}", keyFileVariable: 'identity')]){
+                    //删除目标服务器原html文件
+                    sshCommand remote: getRemoteHost(ssh_ip,ssh_user), command: "mkdir -p ${ssh_nginx_dir}/${project_public_path}"
+                    sshCommand remote: getRemoteHost(ssh_ip,ssh_user), command: "rm -rf ${ssh_nginx_dir}/${project_public_path}"
+                    //传送到远程服务器
+                    sshPut remote: getRemoteHost(ssh_ip,ssh_user), from: "${project_end_path}", into: "${ssh_nginx_dir}"
+                }
+            }
+        }
+
+        stage('deploy to staging') {
+            when {
+                branch 'staging*'
+            }
+
+            environment {
+                // 目标服务器 nginx html目录
+                ssh_nginx_dir = '/home/nginx/html/staging'
+                // 目标服务器信息
+                ssh_ip = '192.168.110.230'
+                ssh_user= "root"
+                ssh_key_uid = "server_privatekey"
+                // 环境
+                profile = "staging"
+                // 项目访问路径
+                project_public_path = "zhihaoscm-admin"
+            }
+
+            steps {
+                //打包
+                sh '''
+                if test `jq '.dependencies, .devDependencies' package.json |md5sum |awk '{print \$1}'` = `cat md5.txt` ;then
+                    pnpm run build:${profile} && rm -rf ${project_end_path} && mv dist ${project_end_path}
+                else
+                    pnpm install && jq '.dependencies, .devDependencies' package.json |md5sum |awk '{print \$1}' > md5.txt && \
+                    pnpm run build:${profile} && rm -rf ${project_end_path} && mv dist ${project_end_path}
+                fi
+                '''
+                withCredentials([sshUserPrivateKey(credentialsId: "${ssh_key_uid}", keyFileVariable: 'identity')]){
+                    //删除目标服务器原html文件
+                    sshCommand remote: getRemoteHost(ssh_ip,ssh_user), command: "mkdir -p ${ssh_nginx_dir}/${project_public_path}"
+                    sshCommand remote: getRemoteHost(ssh_ip,ssh_user), command: "rm -rf ${ssh_nginx_dir}/${project_public_path}"
+                    //传送到远程服务器
+                    sshPut remote: getRemoteHost(ssh_ip,ssh_user), from: "${project_end_path}", into: "${ssh_nginx_dir}"
+                }
+            }
+        }
+    }
+
+    //post阶段是保证执行的。
+    post {
+        failure {
+            emailext body: '$DEFAULT_CONTENT',
+            recipientProviders: [developers(), requestor()],
+            subject: '$DEFAULT_SUBJECT'
+            //清理工作空间
+            //cleanWs()
+        }
+    }
+}
